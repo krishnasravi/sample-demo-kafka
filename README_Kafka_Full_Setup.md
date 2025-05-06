@@ -189,3 +189,5 @@ If successful, the message will be logged by the Kafka consumer in the pod:
 kubectl logs deploy/kafka-producer
 # Output: Received message: HelloKafka
 ```
+
+testing
