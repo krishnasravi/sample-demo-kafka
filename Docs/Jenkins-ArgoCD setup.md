@@ -115,11 +115,4 @@ minikube ip
 Then access:  
 👉 `https://<minikube-ip>:<node-port>`
 
----
-
-## ✅ What's Next?
-
-- Add GitOps deployment through Argo CD  
-- Connect Jenkins to GitHub + Kubernetes  
-- Monitor using Prometheus + Grafana  
-- Deploy microservices using CI/CD pipelines  
+--- 
