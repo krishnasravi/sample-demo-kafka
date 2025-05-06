@@ -34,8 +34,11 @@ pipeline {
 
     stage('Docker Push') {
       steps {
-        withDockerRegistry([credentialsId: 'docker-cred-id', url: '']) {
-          bat 'docker push %DOCKER_REGISTRY%/%IMAGE_NAME%:%IMAGE_TAG%'
+        withCredentials([usernamePassword(credentialsId: 'docker-cred-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+          bat """
+            docker login -u %USERNAME% -p %PASSWORD%
+            docker push %DOCKER_REGISTRY%/%IMAGE_NAME%:%IMAGE_TAG%
+          """
         }
       }
     }
