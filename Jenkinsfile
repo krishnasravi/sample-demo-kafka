@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git url: 'https://github.com/krishnasravi/sample-demo-kafka.git', branch: 'main'
+         git credentialsId: 'github-pat', url: 'https://github.com/krishnasravi/sample-demo-kafka.git'', branch: 'main'
       }
     }
 
