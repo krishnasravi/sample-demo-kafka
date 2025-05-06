@@ -1,0 +1,27 @@
+nohup kubectl port-forward svc/kafka-producer 8080:8080  > port-forward.log 2>&1 &
+
+curl -X POST "http://localhost:8080/api/kafka/publish?message=HelloKafka"
+
+----------------------
+
+nohup kubectl port-forward svc/argocd-server -n argocd 8086:443  > port-forward.log 2>&1 &
+
+kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
+
+---------------------
+
+nohup kubectl port-forward -n monitoring svc/monitoring-stack-grafana 3000:80 > port-forward.log 2>&1 &
+
+- **Username**: `admin`
+- **Password**: `prom-operator`
+
+
+ps aux | grep port-forward
+
+kill <PID>
+
+
+
+
+
+

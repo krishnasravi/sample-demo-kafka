@@ -1,0 +1,31 @@
+---
+- name: Install Minikube in WSL Ubuntu
+  hosts: localhost
+  become: yes
+  tasks:
+
+    - name: Install dependencies
+      apt:
+        name:
+          - curl
+          - apt-transport-https
+          - ca-certificates
+          - conntrack
+        state: present
+        update_cache: yes
+
+    - name: Download Minikube binary
+      get_url:
+        url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        dest: /usr/local/bin/minikube
+        mode: '0755'
+
+    - name: Verify Minikube installation
+      command: minikube version
+      register: minikube_version
+      changed_when: false
+
+    - name: Print Minikube version
+      debug:
+        msg: "{{ minikube_version.stdout }}"
+
