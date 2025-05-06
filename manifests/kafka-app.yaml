@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: kafka-producer
-          image: krishnasravi/kafka-producer:latest
+          image: krishnasravi/kafka-producer:v1.7
           ports:
             - containerPort: 8080
           env:
